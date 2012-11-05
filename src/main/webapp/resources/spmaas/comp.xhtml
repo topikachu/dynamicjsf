@@ -3,21 +3,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
   xmlns:composite="http://java.sun.com/jsf/composite"
   xmlns:h="http://java.sun.com/jsf/html"
-  >
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:spmaas="http://java.sun.com/jsf/composite/spmaas">
+  
 
     <h:head>
         <title>This content will not be displayed</title>
     </h:head>
     <h:body>
         <composite:interface>
-            <composite:attribute name="value" required="false"/>
+            <composite:attribute name="var" required="true"/>
+            <composite:attribute name="layout" required="true"/>
         </composite:interface>
 
         <composite:implementation>
-        <h:panelGroup>
-            <h:outputLabel value="Email id: "></h:outputLabel>
-            <h:inputText value="#{cc.attrs.value}"></h:inputText>
-                    </h:panelGroup>
+			<ui:include src="/spmaas/dynamiclayout/#{cc.attrs.layout}.xhtml">
+				<ui:param name="var" value="#{cc.attrs.var}" />
+			</ui:include>         
         </composite:implementation>
 
     </h:body>
