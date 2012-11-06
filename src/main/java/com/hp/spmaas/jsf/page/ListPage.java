@@ -64,6 +64,7 @@ public class ListPage implements Serializable {
 	public void loadObject() {
 		Page page = uiMetaDataProducer.getDataPage().get(layout);
 		objType = page.getObjectType();
+		columns=new ArrayList<ListPage.ColumnModel>();
 		for (String prop : page.getListProps()) {
 			ColumnModel column = new ColumnModel(prop, prop);
 			columns.add(column);
