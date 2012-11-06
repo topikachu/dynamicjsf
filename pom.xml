@@ -35,7 +35,7 @@
 	</properties>
 
 	<build>
-	  <finalName>dynamicjsf</finalName>
+		<finalName>dynamicjsf</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -50,7 +50,7 @@
 				<version>2.3</version>
 				<configuration>
 					<ignoreWebxml>false</ignoreWebxml>
-					
+
 				</configuration>
 			</plugin>
 		</plugins>
@@ -187,6 +187,12 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
+			<artifactId>myfaces-extcdi-jsf20-module-api</artifactId>
+			<version>1.0.5</version>
+			<scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
 			<artifactId>myfaces-extcdi-jsf20-module-impl</artifactId>
