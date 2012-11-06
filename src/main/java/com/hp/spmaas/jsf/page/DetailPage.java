@@ -88,6 +88,6 @@ public class DetailPage implements Serializable {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(object);
 		
-		return "detail.xhtml?faces-redirect=true";
+		return "pretty:detailPage";
 	}
 }
