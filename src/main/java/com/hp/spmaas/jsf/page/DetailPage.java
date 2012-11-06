@@ -24,7 +24,7 @@ import com.ocpsoft.pretty.faces.annotation.URLMapping;
 
 @Named
 @ConversationScoped
-@URLMapping(id = "detailPage", pattern = "/#{detailPage.layout}/#{detailPage.objid}", viewId = "/faces/detail.xhtml")
+@URLMapping(id = "detailPage", pattern = "/page/#{detailPage.layout}/#{detailPage.objid}", viewId = "/faces/detail.xhtml")
 public class DetailPage implements Serializable {
 	String layout;
 	String objid;
@@ -87,9 +87,7 @@ public class DetailPage implements Serializable {
 	public String save() {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(object);
-		if (!conversation.isTransient()) {
-			conversation.end();
-		}
+		
 		return "/faces/detail.xhtml?redirect=true";
 	}
 }

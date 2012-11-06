@@ -22,7 +22,7 @@ import com.ocpsoft.pretty.faces.annotation.URLMapping;
 
 @Named
 @ConversationScoped
-@URLMapping(id = "listPage", pattern = "/#{listPage.layout}", viewId = "/faces/list.xhtml")
+@URLMapping(id = "listPage", pattern = "/page/#{listPage.layout}", viewId = "/faces/list.xhtml")
 public class ListPage implements Serializable {
 	@Inject
 	SessionFactory sessionFactory;

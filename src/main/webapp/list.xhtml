@@ -10,7 +10,7 @@
 <ui:debug hotkey="z" />
 <h:head>
 
-	<title>JSF-CDI-Project</title>
+	<title>Dyanmic JSF Application</title>
 </h:head>
 <h:body>
 
@@ -46,24 +46,7 @@
  
         </h:panelGrid>  
     </p:dialog>  
-		<!-- 
-    <p:dataTable var="var" value="#{listPage.list}" >
-        <p:column headerText="Name">
-            
-            <pretty:link mappingId="detailPage">
-	<f:param value="#{listPage.layout}" />
-	<f:param value="#{var.id}" />
-	<h:outputText value="#{var.id}" />
-</pretty:link>
-        </p:column>
-         <p:column headerText="Name">
-            
-            
-	<h:outputText value="#{var.name}" />
-
-        </p:column>
-    </p:dataTable>
-     -->
+	<h:link value="back to layout list" outcome="/faces/index.xhtml" />
 	</h:form>
 
 </h:body>
