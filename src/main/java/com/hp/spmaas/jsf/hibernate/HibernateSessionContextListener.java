@@ -1,4 +1,4 @@
-package com.hp.spmaas.jsf;
+package com.hp.spmaas.jsf.hibernate;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Observes;
@@ -15,9 +15,9 @@ import org.slf4j.LoggerFactory;
 
 @SuppressWarnings("serial")
 @RequestScoped
-public class HibernateSessionListener {
+public class HibernateSessionContextListener {
 	private Logger logger = LoggerFactory
-			.getLogger(HibernateSessionListener.class);
+			.getLogger(HibernateSessionContextListener.class);
 	@Inject
 	SessionFactory sessionFactory;
 

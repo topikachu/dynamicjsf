@@ -1,4 +1,4 @@
-package com.hp.spmaas.url;
+package com.hp.spmaas.resource.url;
 
 import java.io.IOException;
 import java.io.InputStream;

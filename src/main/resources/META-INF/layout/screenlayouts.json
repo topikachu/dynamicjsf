@@ -1,0 +1,15 @@
+[
+{"layoutName":"layout1",
+"listProps":["id","name"],
+"detailProps":["name"],
+"preview":["name"],
+"objectType":"Contract"
+},
+
+{
+"layoutName":"layout2",
+"listProps":["id","name","requester.name"],
+"detailProps":["name","requester.name"],
+"preview":["name"],
+"objectType":"Contract"}
+]

@@ -17,9 +17,11 @@
         </composite:interface>
 
         <composite:implementation>
-			<ui:include src="/spmaas/dynamiclayout/#{cc.attrs.layout}.xhtml">
+        <h:panelGrid columns="1">  
+			<ui:include src="/spmaas/detail/dynamic/#{cc.attrs.layout}.xhtml">
 				<ui:param name="var" value="#{cc.attrs.var}" />
 			</ui:include>         
+		</h:panelGrid>
         </composite:implementation>
 
     </h:body>

@@ -1,4 +1,4 @@
-package com.hp.spmaas;
+package com.hp.spmaas.jsf.resource;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.faces.application.Resource;
 import javax.faces.context.FacesContext;
 
-import com.hp.spmaas.url.SPMaasUrlHandler;
+import com.hp.spmaas.resource.url.SPMaasUrlHandler;
 
 public final class SPMaasResource extends Resource {
 	private final String resourceName;

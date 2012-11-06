@@ -1,27 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:spmaas="http://java.sun.com/jsf/composite/spmaas"
-	
-	>
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
 <ui:debug hotkey="z" />
 <h:head>
-	
+
 	<title>JSF-CDI-Project</title>
 </h:head>
-<h:body>	
-	
+<h:body>
 
 
 
-	 <h:form>
-	<spmaas:comp var="#{pojo1}" layout="layout1"></spmaas:comp>
-	 
-	 <spmaas:comp var="#{pojo1}" layout="layout2"></spmaas:comp>
-        <h:commandButton value="submit"></h:commandButton>
+
+	<h:form>
+		<h:panelGrid columns="1">
+			<pretty:link mappingId="listPage">
+				<f:param value="layout1" />
+				<h:outputText value="layout1" />
+			</pretty:link>
+
+			<pretty:link mappingId="listPage">
+				<f:param value="layout2" />
+				<h:outputText value="layout2" />
+			</pretty:link>
+
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>

@@ -18,11 +18,9 @@
 
 
 	 <h:form>
-	
-		#{detailPage.object}
-	 
-	
-        <h:commandButton value="submit"></h:commandButton>
+		<spmaas:detail var="#{detailPage.object}" layout="#{detailPage.layout}"></spmaas:detail>	
+        <h:commandButton value="submit" action="#{detailPage.save}"></h:commandButton>
+        
 	</h:form>
 </h:body>
 </html>

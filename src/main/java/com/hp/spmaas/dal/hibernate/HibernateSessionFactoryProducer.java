@@ -1,6 +1,7 @@
-package com.hp.spmaas.dal;
+package com.hp.spmaas.dal.hibernate;
 
 import java.util.Properties;
+import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
@@ -11,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
@@ -20,22 +22,23 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Environment;
 
-public class HibernateSessionFactory {
+public class HibernateSessionFactoryProducer {
 	SessionFactory sessionFactory = null;
 
 	@Inject
 	EPackage contentPackage;
+
 	@ApplicationScoped
 	@Produces
 	SessionFactory getSessionFactory() {
 		// load ecore model
 		if (sessionFactory != null)
 			return sessionFactory;
-		synchronized (HibernateSessionFactory.class) {
+		synchronized (HibernateSessionFactoryProducer.class) {
 			if (sessionFactory != null) {
 				return sessionFactory;
 			} else {
-				
+
 				final Properties props = new Properties();
 
 				// the jdbc
@@ -45,7 +48,7 @@ public class HibernateSessionFactory {
 				props.setProperty(Environment.PASS, "");
 				props.setProperty(Environment.DIALECT,
 						org.hibernate.dialect.HSQLDialect.class.getName());
-
+				props.setProperty("teneo.mapping.default_id_feature", "id");
 				// set a specific option
 				// see this page
 				// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
@@ -79,33 +82,47 @@ public class HibernateSessionFactory {
 
 	private void prepareData() {
 		// retrieve all meta data of contract
-				EClass contractEClass = (EClass) contentPackage.getEClassifier("Contract");		
-				contractEClass.setName(contentPackage.getEClassifier("Contract").getName());
-				EAttribute contractName = (EAttribute) contractEClass.getEStructuralFeature("name");
-				EReference contractRequester=(EReference) contractEClass.getEStructuralFeature("requester");
-				
-				// retrieve all meta data of person 
-				EClass personEClass = (EClass) contentPackage.getEClassifier("Person");		
-				EAttribute personName = (EAttribute) personEClass.getEStructuralFeature("name");		
-				
-				// create a dynamic person instance
-				EObject person=EcoreUtil.create(personEClass);
-				person.eSet(personName, "person1");
-				
-				// create a dynamic contract instance
-				EObject contract = EcoreUtil.create(contractEClass);
-				contract.eSet(contractName, "contract one");
-				contract.eSet(contractRequester, person);
-				
-				// now persist them all
-				Session session = sessionFactory.openSession();
-				Transaction tx = session.getTransaction();
-				tx.begin();
-				session.save(person);
-				session.save(contract);
-			
-				tx.commit();
-				session.close();
-		
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.getTransaction();
+		tx.begin();
+		for (int i = 0; i < 10; i++) {
+			EClass contractEClass = (EClass) contentPackage
+					.getEClassifier("Contract");
+			contractEClass.setName(contentPackage.getEClassifier("Contract")
+					.getName());
+
+			// retrieve all meta data of person
+			EClass personEClass = (EClass) contentPackage
+					.getEClassifier("Person");
+
+			// create a dynamic person instance
+			EObject person = EcoreUtil.create(personEClass);
+			setValue(person, "name", "person" + String.valueOf(i));
+			setValue(person, "id", genUUID());
+
+			// create a dynamic contract instance
+			EObject contract = EcoreUtil.create(contractEClass);
+			setValue(contract, "name", "contract" + String.valueOf(i));
+			setValue(contract, "requester", person);
+			setValue(contract, "id", genUUID());
+			// now persist them all
+
+			session.save(person);
+			session.save(contract);
+		}
+		tx.commit();
+		session.close();
+
+	}
+
+	private String genUUID() {
+		return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
+	}
+
+	private void setValue(EObject o, String property, Object value) {
+		EStructuralFeature propertyFeature = o.eClass().getEStructuralFeature(
+				property);
+		o.eSet(propertyFeature, value);
+
 	}
 }

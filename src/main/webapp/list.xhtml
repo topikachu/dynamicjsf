@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:spmaas="http://java.sun.com/jsf/composite/spmaas"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
+<ui:debug hotkey="z" />
+<h:head>
+
+	<title>JSF-CDI-Project</title>
+</h:head>
+<h:body>
+
+
+
+
+	<h:form id="form">
+
+ <p:panel header="#{listPage.objType}">
+		<p:dataTable id="listGrid" var="row" value="#{listPage.list}"
+			rowKey="#{row.id}" selection="#{listPage.selectedObject}"
+			selectionMode="single">
+			 <p:ajax event="rowSelect" update=":form:display" oncomplete="objDialog.show()" />  
+			<p:columns value="#{listPage.columns}" var="column"
+				columnIndexVar="colIndex">
+				<f:facet name="header">  
+                #{column.header}  
+            </f:facet>  
+  
+            #{row[column.property]}  
+        </p:columns>
+
+		</p:dataTable>
+</p:panel>
+ <p:dialog header="Detail" widgetVar="objDialog" resizable="false"  
+              width="400" showEffect="explode" hideEffect="explode">  
+  
+        <h:panelGrid id="display" columns="2" cellpadding="4">  
+
+  	
+           <spmaas:preview var="#{listPage.selectedObject}" layout="#{listPage.layout}"></spmaas:preview>
+  
+ 
+        </h:panelGrid>  
+    </p:dialog>  
+		<!-- 
+    <p:dataTable var="var" value="#{listPage.list}" >
+        <p:column headerText="Name">
+            
+            <pretty:link mappingId="detailPage">
+	<f:param value="#{listPage.layout}" />
+	<f:param value="#{var.id}" />
+	<h:outputText value="#{var.id}" />
+</pretty:link>
+        </p:column>
+         <p:column headerText="Name">
+            
+            
+	<h:outputText value="#{var.name}" />
+
+        </p:column>
+    </p:dataTable>
+     -->
+	</h:form>
+
+</h:body>
+</html>

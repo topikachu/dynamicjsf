@@ -3,9 +3,9 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	<application>
-		<el-resolver>com.hp.spmaas.EObjectELResolver</el-resolver>
-		<resource-handler>com.hp.spmaas.TemplateResolver</resource-handler>
-
+		<el-resolver>com.hp.spmaas.el.EObjectELResolver</el-resolver>
+		<resource-handler>com.hp.spmaas.jsf.page.dynamic.DetailTemplateResolver</resource-handler>
+		<resource-handler>com.hp.spmaas.jsf.page.dynamic.PreviewTemplateResolver</resource-handler>
 	</application>
 	<!-- 
 	<lifecycle>

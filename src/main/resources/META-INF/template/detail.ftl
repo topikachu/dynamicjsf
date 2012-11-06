@@ -7,7 +7,10 @@
       >
     <body>
         <ui:composition>
-	    	<spmaas:editor var="#{var}" property="name"></spmaas:editor>
+        	<#list widgets as w>
+  				${w}
+			</#list>  
+	    	
 		</ui:composition>
     </body>
 </html>
