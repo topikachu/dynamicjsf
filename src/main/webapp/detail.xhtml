@@ -1,26 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:spmaas="http://java.sun.com/jsf/composite/spmaas"
-	
-	>
+	xmlns:pretty="http://ocpsoft.com/prettyfaces">
 <ui:debug hotkey="z" />
 <h:head>
-	
+
 	<title>JSF-CDI-Project</title>
 </h:head>
-<h:body>	
-	
+<h:body>
 
 
 
-	 <h:form>
-		<spmaas:detail var="#{detailPage.object}" layout="#{detailPage.layout}"></spmaas:detail>	
-        <h:commandButton value="submit" action="#{detailPage.save}"></h:commandButton>
-        
+
+	<h:form>
+		<spmaas:detail var="#{detailPage.object}"
+			layout="#{detailPage.layout}"></spmaas:detail>
+		<h:commandButton value="submit" action="#{detailPage.save}"></h:commandButton>
+		<pretty:link mappingId="listPage">
+			<f:param value="#{detailPage.layout}" />
+			<h:outputText value="back to list" />
+		</pretty:link>
 	</h:form>
 </h:body>
 </html>

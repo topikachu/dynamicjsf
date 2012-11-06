@@ -1,28 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-  xmlns:composite="http://java.sun.com/jsf/composite"
-  xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:ui="http://java.sun.com/jsf/facelets"
-  xmlns:spmaas="http://java.sun.com/jsf/composite/spmaas">
-  
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:spmaas="http://java.sun.com/jsf/composite/spmaas"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces"
+	xmlns:f="http://java.sun.com/jsf/core">
 
-    <h:head>
-        <title>This content will not be displayed</title>
-    </h:head>
-    <h:body>
-        <composite:interface>
-            <composite:attribute name="var" required="true"/>
-            <composite:attribute name="layout" required="true"/>
-        </composite:interface>
 
-        <composite:implementation>
-        <h:panelGrid columns="1">  
+<h:head>
+	<title>This content will not be displayed</title>
+</h:head>
+<h:body>
+	<composite:interface>
+		<composite:attribute name="var" required="true" />
+		<composite:attribute name="layout" required="true" />
+	</composite:interface>
+
+	<composite:implementation>
+		<h:panelGrid columns="1">
 			<ui:include src="/spmaas/detail/dynamic/#{cc.attrs.layout}.xhtml">
 				<ui:param name="var" value="#{cc.attrs.var}" />
-			</ui:include>         
-		</h:panelGrid>
-        </composite:implementation>
+			</ui:include>
+		</h:panelGrid>		
+	</composite:implementation>
 
-    </h:body>
+</h:body>
 </html>
