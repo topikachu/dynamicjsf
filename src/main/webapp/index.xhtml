@@ -5,7 +5,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:spmaas="http://java.sun.com/jsf/composite/spmaas"
-	xmlns:pretty="http://ocpsoft.com/prettyfaces">
+	xmlns:pretty="http://ocpsoft.com/prettyfaces"
+	xmlns:p="http://primefaces.org/ui">
 <ui:debug hotkey="z" />
 <h:head>
 
@@ -17,18 +18,31 @@
 
 
 	<h:form>
-		<h:panelGrid columns="1">
-			<pretty:link mappingId="listPage">
-				<f:param value="layout1" />
-				<h:outputText value="layout1" />
-			</pretty:link>
+		<p:panel header="open the page">
+			<h:panelGrid columns="1">
+				<pretty:link mappingId="listPage">
+					<f:param value="layout1" />
+					<h:outputText value="layout1" />
+				</pretty:link>
 
-			<pretty:link mappingId="listPage">
-				<f:param value="layout2" />
-				<h:outputText value="layout2" />
-			</pretty:link>
+				<pretty:link mappingId="listPage">
+					<f:param value="layout2" />
+					<h:outputText value="layout2" />
+				</pretty:link>
 
-		</h:panelGrid>
+
+			</h:panelGrid>
+		</p:panel>
+
+
+		<p:panel header="download the definition files">
+			<h:panelGrid columns="1">
+
+				<h:outputLink
+					value="#{request.contextPath}/rest/datamodel/contract.xml">download the contract data model xml</h:outputLink>
+				<h:outputLink value="#{request.contextPath}/rest/layout/layout.json">download the layout json file</h:outputLink>
+			</h:panelGrid>
+		</p:panel>
 	</h:form>
 </h:body>
 </html>

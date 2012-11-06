@@ -63,4 +63,24 @@
       <dispatcher>ERROR</dispatcher>
       <dispatcher>ASYNC</dispatcher>
    </filter-mapping>
+   
+   
+  <servlet>
+		<servlet-name>restSdkService</servlet-name>
+		<servlet-class>
+			org.apache.wink.server.internal.servlet.RestServlet
+		</servlet-class>
+		<servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.hp.spmaas.rest.SPMaasRestApplication</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>restSdkService</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
