@@ -43,7 +43,8 @@ public abstract class AbstractTemplateResolver extends ResourceHandlerWrapper {
 		return wrapped;
 	}
 
-	public Resource createViewResource(String resourceName) {
+	@Override
+	public Resource createResource(String resourceName) {
 	
 		String layoutprefix = getLayoutPrefix();
 		if (resourceName.startsWith(layoutprefix)
@@ -66,7 +67,7 @@ public abstract class AbstractTemplateResolver extends ResourceHandlerWrapper {
 			}
 	
 		}
-		return getWrapped().createViewResource(resourceName);
+		return getWrapped().createResource(resourceName);
 	}
 
 	private void loadPageDefinations() {

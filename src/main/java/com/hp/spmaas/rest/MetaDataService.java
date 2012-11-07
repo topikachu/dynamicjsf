@@ -13,7 +13,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.StreamingOutput;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.wink.common.annotations.Scope;
+
 
 import com.hp.spmaas.cdi.tenant.TenantScoped;
 import com.hp.spmaas.metadata.MetadataUtil;

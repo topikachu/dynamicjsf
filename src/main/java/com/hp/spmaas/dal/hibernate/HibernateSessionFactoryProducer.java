@@ -22,6 +22,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Environment;
 
+import com.hp.spmaas.cdi.tenant.Tenant;
 import com.hp.spmaas.cdi.tenant.TenantScoped;
 
 @TenantScoped
@@ -30,6 +31,9 @@ public class HibernateSessionFactoryProducer {
 
 	@Inject
 	EPackage contentPackage;
+
+	@Inject
+	Tenant tenant;
 
 	@TenantScoped
 	@Produces
@@ -45,13 +49,14 @@ public class HibernateSessionFactoryProducer {
 				final Properties props = new Properties();
 
 				// the jdbc
-				props.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
-				props.setProperty(Environment.USER, "sa");
-				props.setProperty(Environment.URL, "jdbc:hsqldb:mem:library");
-				props.setProperty(Environment.PASS, "");
+//				props.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
+//				props.setProperty(Environment.USER, "sa");
+//				props.setProperty(Environment.URL, "jdbc:hsqldb:mem:library");
+//				props.setProperty(Environment.PASS, "");
 				props.setProperty(Environment.DIALECT,
-						org.hibernate.dialect.HSQLDialect.class.getName());
-				props.setProperty("teneo.mapping.default_id_feature", "id");
+						org.hibernate.dialect.H2Dialect.class.getName());
+				props.setProperty(PersistenceOptions.DEFAULT_ID_FEATURE_NAME,
+						"id");
 				// set a specific option
 				// see this page
 				// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
@@ -59,7 +64,8 @@ public class HibernateSessionFactoryProducer {
 				props.setProperty(
 						PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
 						"REFRESH,PERSIST,MERGE");
-
+				props.setProperty(PersistenceOptions.SQL_TABLE_NAME_PREFIX,
+						tenant.getTenantName());
 				// the name of the session factory
 				String packageName = contentPackage.getName();
 				// create the HbDataStore using the name

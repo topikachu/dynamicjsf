@@ -49,7 +49,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
-					<ignoreWebxml>false</ignoreWebxml>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 
 				</configuration>
 			</plugin>
@@ -57,9 +57,10 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet</artifactId>
-			<version>1.1.10.Final</version>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-6.0</artifactId>
+			<version>1.0.0.Final</version>
+			<type>pom</type>
 		</dependency>
 		<!-- Testing libraries -->
 		<dependency>
@@ -83,23 +84,8 @@
 		<!-- <dependency> <groupId>javax.faces</groupId> <artifactId>javax.faces-api</artifactId> 
 			<version>2.2-SNAPSHOT</version> </dependency> <dependency> <groupId>org.glassfish</groupId> 
 			<artifactId>javax.faces</artifactId> <version>2.2.0-SNAPSHOT</version> </dependency> -->
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.2.0-m05</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.2.0-m05</version>
-		</dependency>
 
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>el-api</artifactId>
-			<version>1.1</version>
-			<scope>provided</scope>
-		</dependency>
+
 
 		<!-- <dependency> <groupId>javax.el</groupId> <artifactId>el-api</artifactId> 
 			<version>2.2</version> </dependency> <dependency> <groupId>org.glassfish.web</groupId> 
@@ -173,37 +159,12 @@
 			<artifactId>prettyfaces-jsf2</artifactId>
 			<version>3.3.3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.myfaces.extensions.cdi.core</groupId>
-			<artifactId>myfaces-extcdi-core-api</artifactId>
-			<version>1.0.5</version>
-			<scope>compile</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.myfaces.extensions.cdi.core</groupId>
-			<artifactId>myfaces-extcdi-core-impl</artifactId>
-			<version>1.0.5</version>
-			<scope>runtime</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
-			<artifactId>myfaces-extcdi-jsf20-module-api</artifactId>
-			<version>1.0.5</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
-			<artifactId>myfaces-extcdi-jsf20-module-impl</artifactId>
-			<version>1.0.5</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
-		</dependency>
+
+
+
+
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -236,11 +197,7 @@
 			<version>1.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.wink</groupId>
-			<artifactId>wink-server</artifactId>
-			<version>1.2.1-incubating</version>
-		</dependency>
+
 
 
 		<dependency>
@@ -249,12 +206,8 @@
 			<version>2.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
+	
+
 	</dependencies>
 
 
