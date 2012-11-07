@@ -18,7 +18,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import com.hp.spmaas.ui.metadata.UIMetaDataProducer;
+import com.hp.spmaas.metadata.ui.UIMetaDataProducer;
 import com.ocpsoft.pretty.faces.annotation.URLAction;
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 

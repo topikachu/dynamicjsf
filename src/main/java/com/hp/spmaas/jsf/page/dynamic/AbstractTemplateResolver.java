@@ -18,7 +18,7 @@ import javax.faces.application.ResourceHandlerWrapper;
 import javax.faces.context.FacesContext;
 
 import com.hp.spmaas.jsf.resource.SPMaasResource;
-import com.hp.spmaas.ui.metadata.Page;
+import com.hp.spmaas.metadata.ui.Page;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

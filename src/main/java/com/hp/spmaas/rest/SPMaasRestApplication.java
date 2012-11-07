@@ -10,8 +10,7 @@ public class SPMaasRestApplication extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add(DataModelService.class);
-        classes.add(LayoutService.class);
+        classes.add(MetaDataService.class);        
         return classes;
     }
 }

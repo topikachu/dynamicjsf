@@ -1,10 +1,19 @@
-<pretty-config xmlns="http://ocpsoft.org/prettyfaces/3.3.3" 
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-               xsi:schemaLocation="http://ocpsoft.org/prettyfaces/3.3.3 http://ocpsoft.org/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.3.xsd">
+<pretty-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://ocpsoft.org/prettyfaces/3.3.3"
+    xsi:schemaLocation="http://ocpsoft.org/prettyfaces/3.3.3 http://ocpsoft.org/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.3.xsd" >
 
-	
-<url-mapping id="home"> 
-          <pattern value="/" /> 
-          <view-id value="/faces/index.xhtml" />
-      </url-mapping> 
+    <url-mapping id="land" >
+
+        <pattern value="/" />
+
+        <view-id value="/faces/land.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="index" >
+
+        <pattern value="/index" />
+
+        <view-id value="/faces/index.xhtml" />
+    </url-mapping>
+
 </pretty-config>

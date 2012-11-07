@@ -1,4 +1,4 @@
-package com.hp.spmaas.ui.metadata;
+package com.hp.spmaas.metadata.ui;
 
 import java.util.List;
 

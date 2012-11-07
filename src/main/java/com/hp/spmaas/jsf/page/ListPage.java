@@ -15,8 +15,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.hp.spmaas.ui.metadata.Page;
-import com.hp.spmaas.ui.metadata.UIMetaDataProducer;
+import com.hp.spmaas.metadata.ui.Page;
+import com.hp.spmaas.metadata.ui.UIMetaDataProducer;
 import com.ocpsoft.pretty.faces.annotation.URLAction;
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 

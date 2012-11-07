@@ -13,6 +13,8 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hp.spmaas.cdi.tenant.TenantControl;
+
 @SuppressWarnings("serial")
 @RequestScoped
 public class HibernateSessionContextListener {
@@ -21,23 +23,25 @@ public class HibernateSessionContextListener {
 	@Inject
 	SessionFactory sessionFactory;
 
+	@Inject
+	TenantControl tenantControl;
 
+	// @BeforePhase(JsfPhaseId.RESTORE_VIEW)
+	public void beforePhase(
+			@Observes @BeforePhase(JsfPhaseId.RESTORE_VIEW) PhaseEvent phaseEvent) {
+		if (tenantControl.hasTenantActive()) {
 
-	//@BeforePhase(JsfPhaseId.RESTORE_VIEW)
-	public void beforePhase(@Observes @BeforePhase(JsfPhaseId.RESTORE_VIEW) PhaseEvent phaseEvent) {
-		logger.debug("beforePhase begin transaction");
-		if (!sessionFactory.getCurrentSession().getTransaction().isActive())
-		{
 			sessionFactory.getCurrentSession().beginTransaction();
-		}else
-		{
-			logger.info("why beforePhase begin transaction twice?");
 		}
 	}
 
-	//@AfterPhase(JsfPhaseId.RENDER_RESPONSE)
-	public void afterPhase(@Observes@AfterPhase(JsfPhaseId.RENDER_RESPONSE)PhaseEvent phaseEvent) {
+	// @AfterPhase(JsfPhaseId.RENDER_RESPONSE)
+	public void afterPhase(
+			@Observes @AfterPhase(JsfPhaseId.RENDER_RESPONSE) PhaseEvent phaseEvent) {
 		// the Hibernate commit or roll back transaction ...
+		if (!tenantControl.hasTenantActive()) {
+			return;
+		}
 		try {
 			logger.debug("afterPhase is invoked. ");
 			if (sessionFactory.getCurrentSession().getTransaction().isActive()) {

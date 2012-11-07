@@ -1,9 +1,10 @@
-package com.hp.spmaas.dal.metadata;
+package com.hp.spmaas.metadata.dal;
 
 import java.net.URL;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -14,11 +15,23 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import com.hp.spmaas.cdi.tenant.Tenant;
+import com.hp.spmaas.cdi.tenant.TenantScoped;
+import com.hp.spmaas.metadata.MetadataUtil;
+
+@TenantScoped
 public class EMFMetaDataProducer {
 
+	
+	@Inject
+	private Tenant tenant;
+	
+	@Inject
+	private MetadataUtil metadataUtil;
+	
 	EPackage contentPackage = null;
 	@Produces
-	@ApplicationScoped
+	@TenantScoped	
 	EPackage getContentPackage() {
 		if (contentPackage != null)
 			return contentPackage;
@@ -30,7 +43,7 @@ public class EMFMetaDataProducer {
 				resSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 						.put("*", new XMIResourceFactoryImpl());
 				URL url = Thread.currentThread().getContextClassLoader()
-						.getResource("META-INF/model/Contract.ecore");
+						.getResource(metadataUtil.getDataModelMetaDataPath());
 				Resource resource = resSet.getResource(
 						URI.createURI(url.toString()), true);
 				resource.getContents();

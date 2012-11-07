@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.faces.application.ResourceHandler;
 
-import com.hp.spmaas.ui.metadata.Page;
+import com.hp.spmaas.metadata.ui.Page;
 
 //TODO: need modify to support multitenancy
 public class DetailTemplateResolver extends AbstractTemplateResolver {

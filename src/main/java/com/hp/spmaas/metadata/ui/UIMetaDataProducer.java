@@ -1,4 +1,4 @@
-package com.hp.spmaas.ui.metadata;
+package com.hp.spmaas.metadata.ui;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,18 +11,26 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hp.spmaas.cdi.tenant.Tenant;
+import com.hp.spmaas.cdi.tenant.TenantScoped;
+import com.hp.spmaas.metadata.MetadataUtil;
 
-@ApplicationScoped
+@TenantScoped
 @Named("UIMetaDataProducer")
 public class UIMetaDataProducer {
 
 	private static final String UTF8 = "utf8";
 	private Map<String, Page> dataPage = new HashMap<String, Page>();
-
+	@Inject
+	private Tenant tenat;
+	
+	@Inject
+	private MetadataUtil metadataUtil;
 	@PostConstruct
 	public void onStartup() {
 		try {
@@ -37,7 +45,7 @@ public class UIMetaDataProducer {
 	private void loadPage() throws UnsupportedEncodingException {
 
 		InputStream is = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream("META-INF/layout/screenlayouts.json");
+				.getResourceAsStream(metadataUtil.getUIMetaDataPath());
 		loadPage(new InputStreamReader(is, UTF8), PageType.data);
 
 	}

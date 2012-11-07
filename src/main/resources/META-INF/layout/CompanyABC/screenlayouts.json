@@ -1,6 +1,6 @@
 [
 {"layoutName":"layout1",
-"listProps":["id","name"],
+"listProps":["id","name","abc"],
 "detailProps":["name"],
 "preview":["name"],
 "objectType":"Contract"

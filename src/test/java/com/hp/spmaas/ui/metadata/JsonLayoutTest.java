@@ -12,6 +12,9 @@ import java.util.List;
 import org.junit.Test;
 
 import com.google.gson.Gson;
+import com.hp.spmaas.metadata.ui.Page;
+import com.hp.spmaas.metadata.ui.PageType;
+import com.hp.spmaas.metadata.ui.UIMetaDataProducer;
 
 public class JsonLayoutTest {
 

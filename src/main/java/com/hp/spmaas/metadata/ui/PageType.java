@@ -1,4 +1,4 @@
-package com.hp.spmaas.ui.metadata;
+package com.hp.spmaas.metadata.ui;
 
 public enum PageType {
 data,wizard;

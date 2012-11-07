@@ -21,8 +21,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import com.hp.spmaas.jsf.resource.SPMaasResource;
+import com.hp.spmaas.metadata.ui.Page;
 
-import com.hp.spmaas.ui.metadata.Page;
 import com.hp.spmaas.ui.metadata.annotation.DetailPageDefinations;
 
 import freemarker.template.Configuration;

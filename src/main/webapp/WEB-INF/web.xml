@@ -68,13 +68,20 @@
   <servlet>
 		<servlet-name>restSdkService</servlet-name>
 		<servlet-class>
-			org.apache.wink.server.internal.servlet.RestServlet
+			org.seamless.cdi.extension.wink.CDIRestServlet
 		</servlet-class>
 		<servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+		<!-- 
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
             <param-value>com.hp.spmaas.rest.SPMaasRestApplication</param-value>
         </init-param>
+         -->
+        <init-param>
+            <param-name>beanManager</param-name>
+            <param-value>org.jboss.weld.environment.servlet.BeanManager</param-value>
+        </init-param>
+        
         <load-on-startup>1</load-on-startup>
 	</servlet>
 

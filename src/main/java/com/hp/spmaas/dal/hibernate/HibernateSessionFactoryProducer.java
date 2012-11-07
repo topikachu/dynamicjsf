@@ -22,13 +22,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Environment;
 
+import com.hp.spmaas.cdi.tenant.TenantScoped;
+
+@TenantScoped
 public class HibernateSessionFactoryProducer {
 	SessionFactory sessionFactory = null;
 
 	@Inject
 	EPackage contentPackage;
 
-	@ApplicationScoped
+	@TenantScoped
 	@Produces
 	SessionFactory getSessionFactory() {
 		// load ecore model
@@ -60,7 +63,7 @@ public class HibernateSessionFactoryProducer {
 				// the name of the session factory
 				String packageName = contentPackage.getName();
 				// create the HbDataStore using the name
-				final HbDataStore hbds = HbHelper.INSTANCE
+				final HbDataStore hbds = new HbHelper()
 						.createRegisterDataStore(packageName);
 
 				// set the properties
